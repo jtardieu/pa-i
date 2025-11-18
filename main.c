@@ -3,38 +3,67 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jtardieu <jtardieu@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jtardieu <jtardieu@student.42mulhouse.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/12 14:23:28 by jtardieu          #+#    #+#             */
-/*   Updated: 2025/11/13 15:39:29 by jtardieu         ###   ########.fr       */
+/*   Updated: 2025/11/18 01:07:08 by jtardieu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdio.h>
-#include "printf.h"
 #include <stdarg.h>
-#include <stdbool.h>
 #include <stdlib.h>
+#include "printf.h"
 
-void affiche(int i,...);
+#include <stdio.h>
 
-int main(int ac , char **av)
+void	affiche(int i, ...);
+
+int	main(int ac, char **av)
 {
 	(void) ac;
-	affiche(atoi(av[3]),av[1],av[2]);
-	return 0;
+	//affiche(atoi(av[3]), *av[1], *av[2]);
+	char a = av[1][0];
+	char *b = av[2];
+	int c = ft_atoi(av[3]);
 
+
+	ft_printf("ft Char: %c\n", a);
+    ft_printf("ft String: %s\n", b);
+    ft_printf("ft Pointer: %p\n", (void *)0x1234abcd);
+    ft_printf("ft Decimal: %d\n", c);
+    ft_printf("ft Integer: %i\n", 1337);
+    ft_printf("ft Unsigned: %u\n", 3000000000U);
+    ft_printf("ft Hex lower: %x\n", -900000000);
+    ft_printf("ft Hex upper: %X\n", 48879);
+    ft_printf("ft Percent: %%\n");
+	ft_printf("ft une bite de moine %c\n hun hun %s\n chifre %d\n\n",a,b,c);
+
+	printf("Char: %c\n", a);
+    printf("String: %s\n", b);
+    printf("Pointer: %p\n", (void *)0x1234abcd);
+    printf("Decimal: %d\n", c);
+    printf("Integer: %i\n", 1337);
+    printf("Unsigned: %u\n", 3000000000U);
+    printf("Hex lower: %x\n", -900000000);
+    printf("Hex upper: %X\n", 48879);
+    printf("Percent: %%\n");
+	printf("chien d'home %c\n la suite %s\nchifre %d\n",a,b,c);
+	return 0;
 }
 
-void affiche(int i, ...)
+void	affiche(int i, ...)
 {
-
-	char argu ;
-	va_list infoparam;
-	
-	va_start (infoparam,i);
-	argu = (char)va_arg(infoparam,int);
-	printf("j imagine space c ca %c",argu);
+	int		j = 0;
+	char	argu ;
+	va_list	infoparam;
+	va_start (infoparam, i);
+	while (j != i)
+	{
+		argu = (char )va_arg(infoparam, int);
+		printf("j imagine space c ca %c\n",argu);
+		j++;
+	}
+	va_end(infoparam);
 }
 
 // #include <stdarg.h>

@@ -4,7 +4,7 @@ CFLAGS = -Wall -Werror -Wextra
 
 LIBFT = libft/libft.a
 
-SOURCE = printf.c
+SOURCE = ft_printf.c
 
 OBJ = $(SOURCE:.c=.o)
 

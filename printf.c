@@ -6,7 +6,7 @@
 /*   By: jtardieu <jtardieu@student.42mulhouse.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/12 14:30:06 by jtardieu          #+#    #+#             */
-/*   Updated: 2025/11/18 01:26:12 by jtardieu         ###   ########.fr       */
+/*   Updated: 2025/11/18 16:43:38 by jtardieu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,6 @@ int ft_printf(const char *str, ...)
 {
 	va_list	var;
 	int		i;
-	char	blc;
 
 	va_start (var ,str);
 	i = 0 ;
@@ -30,10 +29,7 @@ int ft_printf(const char *str, ...)
 		{
 			i++;
 			if (str[i]=='c')
-			{
-				blc = (char)va_arg(var,int);
-				write(1,&blc,1);
-			}
+				ft_putchar_fd(va_arg(var,int),1);
 			else if (str[i]=='s')
 				ft_putstr_fd(va_arg(var,char *),1);
 			else if (str[i]=='x')
@@ -42,6 +38,11 @@ int ft_printf(const char *str, ...)
 				inhexa(va_arg(var,unsigned int),1);
 			else if (str[i]=='u')
 				inhexa(va_arg(var,unsigned int),2);
+			else if (str[i]=='p')
+			{
+				write(1,"0x",2);
+				inhexa(va_arg(var,size_t) ,0);
+			}
 			else if (str[i]=='d'||str[i]=='i')
 				ft_putnbr_fd(va_arg(var,int), 1);
 			else

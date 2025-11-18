@@ -6,14 +6,15 @@
 /*   By: jtardieu <jtardieu@student.42mulhouse.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/12 14:23:28 by jtardieu          #+#    #+#             */
-/*   Updated: 2025/11/18 01:07:08 by jtardieu         ###   ########.fr       */
+/*   Updated: 2025/11/18 18:07:50 by jtardieu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdarg.h>
 #include <stdlib.h>
-#include "printf.h"
-
+#include "ft_printf.h"
+#include <stdint.h>
+#include <limits.h>
 #include <stdio.h>
 
 void	affiche(int i, ...);
@@ -26,6 +27,90 @@ int	main(int ac, char **av)
 	char *b = av[2];
 	int c = ft_atoi(av[3]);
 
+	int e;
+
+	ft_printf("ft\n");
+	ft_printf("%c \n", '0');
+	e = ft_printf(" %c \n", '0');
+	ft_printf(" %d \n", e);
+	ft_printf(" %c \n", '0' - 256);
+	ft_printf("%c \n", '0' + 256);
+	ft_printf(" %c %c %c \n", '1', '2', '3');
+	ft_printf(" %c %c %c \n", '2', '1', 0);
+	ft_printf(" %c %c %c \n\n", 0, '1', '2');
+
+	printf("print\n");
+	printf("%c \n", '0');
+	e = printf(" %c \n", '0');
+	printf(" %d \n", e);
+	printf(" %c \n", '0' - 256);
+	printf("%c \n", '0' + 256);
+	printf(" %c %c %c \n", '1', '2', '3');
+	printf(" %c %c %c \n", '2', '1', 0);
+	printf(" %c %c %c \n\n", 0, '1', '2');
+
+	
+	ft_printf("ft\n");
+	ft_printf(" %d \n", 0);
+	ft_printf(" %d \n", -1);
+	ft_printf(" %d \n", 1);
+	ft_printf(" %d \n", 9);
+	ft_printf(" %d \n", 10);
+	ft_printf(" %d \n", 11);
+	ft_printf(" %d \n", 15);
+	ft_printf(" %d \n", 16);
+	ft_printf(" %d \n", 17);
+	ft_printf(" %d \n", 99);
+	ft_printf(" %d \n", 100);
+	ft_printf(" %d \n", 101);
+	ft_printf(" %d \n", -9);
+	ft_printf(" %d \n", -10);
+	ft_printf(" %d \n", -11);
+	ft_printf(" %d \n", -14);
+	ft_printf(" %d \n", -15);
+	ft_printf(" %d \n", -16);
+	ft_printf(" %d \n", -99);
+	ft_printf(" %d \n", -100);
+	ft_printf(" %d \n", -101);
+	ft_printf(" %d \n", INT_MAX);
+	ft_printf(" %d \n", INT_MIN);
+	ft_printf(" %d \n", LONG_MAX);
+	ft_printf(" %d \n", LONG_MIN);
+	ft_printf(" %d \n", UINT_MAX);
+	ft_printf(" %d \n", ULONG_MAX);
+	ft_printf(" %d \n", 9223372036854775807LL);
+	ft_printf(" %d %d %d %d %d %d %d", INT_MAX, INT_MIN, LONG_MAX, LONG_MIN, ULONG_MAX, 0, -42);
+
+	printf("\n\nprint\n");
+	printf(" %d \n", 0);
+	printf(" %d \n", -1);
+	printf(" %d \n", 1);
+	printf(" %d \n", 9);
+	printf(" %d \n", 10);
+	printf(" %d \n", 11);
+	printf(" %d \n", 15);
+	printf(" %d \n", 16);
+	printf(" %d \n", 17);
+	printf(" %d \n", 99);
+	printf(" %d \n", 100);
+	printf(" %d \n", 101);
+	printf(" %d \n", -9);
+	printf(" %d \n", -10);
+	printf(" %d \n", -11);
+	printf(" %d \n", -14);
+	printf(" %d \n", -15);
+	printf(" %d \n", -16);
+	printf(" %d \n", -99);
+	printf(" %d \n", -100);
+	printf(" %d \n", -101);
+	printf(" %d \n", INT_MAX);
+	printf(" %d \n", INT_MIN);
+	printf(" %d \n", LONG_MAX);
+	printf(" %d \n", LONG_MIN);
+	printf(" %d \n", UINT_MAX);
+	printf(" %d \n", ULONG_MAX);
+	printf(" %d \n", 9223372036854775807LL);
+	printf(" %d %d %d %d %d %d %d \n\n", INT_MAX, INT_MIN, LONG_MAX, LONG_MIN, ULONG_MAX, 0, -42);
 
 	ft_printf("ft Char: %c\n", a);
     ft_printf("ft String: %s\n", b);

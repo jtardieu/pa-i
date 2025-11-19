@@ -6,7 +6,7 @@
 /*   By: jtardieu <jtardieu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/12 14:30:06 by jtardieu          #+#    #+#             */
-/*   Updated: 2025/11/19 16:42:19 by jtardieu         ###   ########.fr       */
+/*   Updated: 2025/11/19 19:57:36 by jtardieu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,27 +21,26 @@ int	ft_printf(const char *str, ...)
 {
 	va_list	var;
 	int		i;
-	int		j;
-	int		k;
+	int		result;
 
 	va_start (var, str);
 	i = 0 ;
-	j = 0 ;
-	k = 0 ;
+	result = 0 ;
+	if (!str || write(1, &str[i], 0) == -1)
+		return (-1);
 	while (str[i])
 	{
 		if (str[i] == '%')
 		{
 			i++;
-			k += cfekoi(str[i], var);
-			j++;
+			result += cfekoi(str[i], var) + 1;
 		}
 		else
-			write(1, &str[i], 1);
+			result += write(1, &str[i], 1);
 		i++;
 	}
 	va_end(var);
-	return (i - j + k);
+	return (result);
 }
 
 int	inhexa(unsigned long n, int i)
